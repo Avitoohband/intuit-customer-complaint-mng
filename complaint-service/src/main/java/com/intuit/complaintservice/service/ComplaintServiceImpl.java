@@ -4,7 +4,6 @@ import com.intuit.complaintservice.dto.*;
 import com.intuit.complaintservice.exception.ComplaintException;
 import com.intuit.complaintservice.model.Complaint;
 import com.intuit.complaintservice.repository.ComplaintRepository;
-import jakarta.ws.rs.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

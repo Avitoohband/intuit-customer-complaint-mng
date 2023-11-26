@@ -10,6 +10,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 public class ComplaintRequest {
     private UUID userId;
     private UUID purchaseId;
