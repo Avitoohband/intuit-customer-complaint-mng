@@ -1,11 +1,13 @@
 package com.intuit.complaintservice.service;
 
 import com.intuit.complaintservice.dto.*;
+import com.intuit.complaintservice.exception.ComplaintException;
 import com.intuit.complaintservice.model.Complaint;
 import com.intuit.complaintservice.repository.ComplaintRepository;
 import jakarta.ws.rs.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -36,7 +38,7 @@ public class ComplaintServiceImpl implements ComplaintService {
             return createFullResponse(complaint.get(), purchase, user);
         }
         log.error("Complaint with id {} doesn't exists", complaintId);
-        throw new NotFoundException("Not Found");
+        throw new ComplaintException("Complaint Doesn't exists!", HttpStatus.NOT_FOUND);
     }
 
 
