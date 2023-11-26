@@ -12,14 +12,14 @@ spring:
            uri: lb://complaint-service
            predicates:
              - Path=/api/complaint/**
-#        - id: order-service
-#          uri: lb://order-service
-#          predicates:
-#            - Path=/api/order
-#        - id: inventory-service
-#          uri: lb://inventory-service
-#          predicates:
-#            - Path=/api/inventory
+        - id: user-management-service
+          uri: lb://user-management-service
+          predicates:
+            - Path=/users/**
+        - id: purchases-service
+          uri: lb://purchases-service
+          predicates:
+            - Path=/purchases/**
         - id: discovery-server
           uri: http://localhost:8761
           predicates:
@@ -30,12 +30,12 @@ spring:
           uri: http://localhost:8761
           predicates:
             - Path=/eureka/**
-#
-#logging:
-#  level:
-#    root: INFO
-#    org:
-#      springframework:
-#        cloud:
-#          gateway: TRACE
-#          gateway.route.RouteDefinitionLocator: INFO
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        cloud:
+          #for prod change TRACE to INFO
+          gateway: TRACE
+          gateway.route.RouteDefinitionLocator: INFO
