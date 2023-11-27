@@ -54,7 +54,7 @@ then start invoking endpoints.</h4>
           "subject": "I made a purchase and the item hasn't shipped. It's been over a week. Please help!",
           "purchaseId": "f256c996-6dcb-40cf-8dce-a11fa9bcab6b"
           }
-    - ```
+    ```
     - Response - Status 201(Created):
    ```
        {
