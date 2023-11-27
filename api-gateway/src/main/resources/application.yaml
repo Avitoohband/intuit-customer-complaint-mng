@@ -13,11 +13,11 @@ spring:
            predicates:
              - Path=/api/complaint/**
         - id: user-management-service
-          uri: lb://user-management-service
+          uri: http://localhost:8081/users
           predicates:
             - Path=/users/**
         - id: purchases-service
-          uri: lb://purchases-service
+          uri: http://localhost:8081/purchases
           predicates:
             - Path=/purchases/**
         - id: discovery-server
@@ -36,6 +36,6 @@ logging:
     org:
       springframework:
         cloud:
-          #for prod change TRACE to INFO
+          # in PROD env change TRACE to INFO
           gateway: TRACE
           gateway.route.RouteDefinitionLocator: INFO

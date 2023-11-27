@@ -9,6 +9,8 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Getter
+@Setter
 public class FullComplaintResponse {
     private UUID complaintId;
     private String subject;

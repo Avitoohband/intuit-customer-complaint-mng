@@ -1,10 +1,7 @@
 package com.intuit.complaintservice.dto;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -12,6 +9,8 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Getter
+@Setter
 public class UserManagementResponse {
     private UUID id;
     private String fullName;

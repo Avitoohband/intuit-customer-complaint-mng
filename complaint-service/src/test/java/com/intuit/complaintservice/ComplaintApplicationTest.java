@@ -90,7 +90,7 @@ public class ComplaintApplicationTest {
 
         FullComplaintResponse fullResponse = FullComplaintResponse.builder()
                 .complaintId(UUID.fromString("6d871ff5-8cb9-4513-ad76-4ad67c792e97"))
-                .subject("I made a purchase and the item hasn't shipped. It's bgeen over a week. Please help!")
+                .subject("I made a purchase and the item hasn't shipped. It's been over a week. Please help!")
                 .content("The seller never sent my item!")
                 .build();
         fullResponse.setUserManagementResponse(

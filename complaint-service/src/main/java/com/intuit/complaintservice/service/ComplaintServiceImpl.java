@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -19,7 +19,6 @@ import java.util.UUID;
 public class ComplaintServiceImpl implements ComplaintService {
 
     private final ComplaintRepository complaintRepository;
-    private final WebClient.Builder webClientBuilder;
 
     public ComplaintResponse createComplaint(ComplaintRequest complaintRequest) {
         Complaint complaint = dtoToEntity(complaintRequest);
@@ -71,32 +70,13 @@ public class ComplaintServiceImpl implements ComplaintService {
     }
 
     private PurchaseResponse getPurchases(UUID purchaseId) {
-
-        // After adding the others services(already included in the api-gateway), uncomment
-//        return webClientBuilder.build().get()
-//                .uri("http://purchases-service/" + purchaseId)
-//                .retrieve()
-//                .bodyToMono(PurchaseResponse.class)
-//                .block();
-
-        // After adding the others services, comment
-        return PurchaseResponse.builder()
-                .productName("Demo")
-                .build();
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject("http://localhost:8081/purchases/{id}", PurchaseResponse.class, purchaseId.toString());
     }
 
     private UserManagementResponse getUserManagement(UUID userId) {
-
-        // After adding the others services(already included in the api-gateway), uncomment
-//        return webClientBuilder.build().get()
-//                .uri("http://user-management-service/" + userId)
-//                .retrieve()
-//                .bodyToMono(UserManagementResponse.class)
-//                .block();
-
-        // After adding the others services, comment
-        return UserManagementResponse.builder()
-                .fullName("demo").build();
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject("http://localhost:8081/users/{id}", UserManagementResponse.class, userId.toString());
     }
 
 }
