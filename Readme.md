@@ -2,19 +2,18 @@
 
 <h2>Intuit Home Assignment</h2>
 
-An application which create and retrieve complaints
-
+An application that creates and retrieves complaints.
 
 ## Technologies
 
 - Java 21
-- Spring Boot , Spring web, Spring Cloud, Spring-aop
+- Spring Boot [web, cloud, webflux, aop, jpa]
 - Maven
 - Lombok
 - Mockito
 - Junit
 - MySQL
-- Spring
+- Eureka
 - Api-Gateway
 
 ## Features
@@ -23,7 +22,9 @@ Users can create and retrieve complaints
 
 ### Prerequisites
 
-MySql Workbench
+* Java 21</br>
+* MySQL Server</br>
+* MySQL Workbench</br>
 
 ## Getting Started
 
