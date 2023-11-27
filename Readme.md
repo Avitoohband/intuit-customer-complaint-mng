@@ -28,10 +28,15 @@ MySql Workbench
 ## Getting Started
 
 in application.yaml, make sure to configure my sql</br>
-spring.datasource.driver-class-name: com.mysql.cj.jdbc.Driver</br>
-spring.datasource.url: jdbc:mysql://localhost:3306/complaint-service?createDatabaseIfNotExist=true</br>
-spring.datasource.username: {you_username}</br>
-spring.datasource.password: {you_password}</br>
+```
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/complaint-service?createDatabaseIfNotExist=true
+    username: {your_username}
+    password: {your_password}
+```
+
 
 <h4> run Eureka server,
 Api-gateway Server and then Complaint service,

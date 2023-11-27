@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "ce59559f-ebfa-43a9-8eba-08b089a140b0",
+		"name": "IntuitCustomerComplaintSystem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16139487"
+	},
+	"item": [
+		{
+			"name": "complaint-create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"userId\": \"14b28cf0-7a0d-11ec-90d6-0242ac120003\",\r\n\"complaint\": \"The seller never sent my item!\",\r\n\"subject\": \"I made a purchase and the item hasn't shipped. It's bgeen over a week. Please help!\",\r\n\"purchaseId\": \"14b28cf0-7a0d-11ec-90d6-0242ac120003\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/complaint",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"complaint"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "complaint-get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/complaint/6d871ff5-8cb9-4513-ad76-4ad67c792e97",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"complaint",
+						"6d871ff5-8cb9-4513-ad76-4ad67c792e97"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
