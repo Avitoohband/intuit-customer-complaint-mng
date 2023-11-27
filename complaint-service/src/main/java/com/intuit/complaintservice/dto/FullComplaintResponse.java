@@ -1,7 +1,6 @@
 package com.intuit.complaintservice.dto;
 
 import lombok.*;
-import org.apache.catalina.User;
 
 import java.util.UUID;
 

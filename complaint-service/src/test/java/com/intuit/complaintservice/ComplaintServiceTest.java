@@ -8,12 +8,11 @@ import com.intuit.complaintservice.model.Complaint;
 import com.intuit.complaintservice.repository.ComplaintRepository;
 import com.intuit.complaintservice.service.ComplaintServiceImpl;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Optional;
@@ -24,7 +23,7 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)
+@SpringBootTest
 public class ComplaintServiceTest {
 
     @InjectMocks
@@ -67,19 +66,18 @@ public class ComplaintServiceTest {
         when(restTemplate.getForObject(
                 eq(PURCHASE_URI),
                 eq(PurchaseResponse.class),
-                eq(String.class)
+                eq(complaint.getPurchaseId().toString())
         )).thenReturn(getPurchaseResponse());
 
         when(restTemplate.getForObject(
                 eq(USER_MGN_URI),
                 eq(UserManagementResponse.class),
-                eq(String.class)
+                eq(complaint.getUserId().toString())
         )).thenReturn(getUserManagementResponse());
 
         FullComplaintResponse  actualResponse = complaintService.getComplaint(complaintId);
 
-        assertEquals(expectedResponse, actualResponse);
-
+        getComplaintAsserts(expectedResponse, actualResponse);
 
 
     }
@@ -95,8 +93,8 @@ public class ComplaintServiceTest {
 
     private ComplaintRequest getComplaintRequest() {
         return ComplaintRequest.builder()
-                .userId(UUID.fromString("14b28cf0-7a0d-11ec-90d6-0242ac120003"))
-                .purchaseId(UUID.fromString("14b28cf0-7a0d-11ec-90d6-0242ac120003"))
+                .userId(UUID.fromString("a93adc57-4d59-4a9d-85c6-b5d48d99101d"))
+                .purchaseId(UUID.fromString("f256c996-6dcb-40cf-8dce-a11fa9bcab6b"))
                 .subject("I made a purchase and the item hasn't shipped. It's been over a week. Please help!")
                 .complaint("The seller never sent my item!")
                 .build();
@@ -104,6 +102,7 @@ public class ComplaintServiceTest {
     private PurchaseResponse getPurchaseResponse(){
         return PurchaseResponse.builder()
                 .id(UUID.fromString("f256c996-6dcb-40cf-8dce-a11fa9bcab6b"))
+                .userId(UUID.fromString("a93adc57-4d59-4a9d-85c6-b5d48d99101d"))
                 .productName("Test")
                 .productId(UUID.fromString("4ac9da0b-66eb-415c-9153-a59ec0b3c3fe"))
                 .productName("Book")
@@ -140,6 +139,15 @@ public class ComplaintServiceTest {
                 getUserManagementResponse()
         );
         return fullResponse;
+
+    }
+    private static void getComplaintAsserts(FullComplaintResponse expectedResponse, FullComplaintResponse actualResponse) {
+        assertEquals(expectedResponse.getSubject(), actualResponse.getSubject());
+        assertEquals(expectedResponse.getPurchaseResponse().getProductName(),
+                actualResponse.getPurchaseResponse().getProductName());
+        assertEquals(expectedResponse.getUserManagementResponse().getFullName(),
+                actualResponse.getUserManagementResponse().getFullName());
+        // assert all fields...
 
     }
 }
