@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 @Slf4j
-public class LogErrorAspect {
+public class LoggingErrorAspect {
 
     @Pointcut("execution(* com.intuit.complaintservice.controller.*.*(..))")
     public void controllerPointcut() {
