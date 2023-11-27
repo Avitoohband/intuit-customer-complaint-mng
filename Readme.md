@@ -96,5 +96,5 @@ then start invoking endpoints.</h4>
 - Implementing security 
 - Transition from using RestTemplate to the more modern and reactive approach of WebClient for improved performance and flexibility.
 - Routing Purchase and User Management HTTP Calls through API Gateway
-- Consider Adding a Queue 
-- Explore Adding Metrics Services
+- Explore Adding Sleuth and Zipkin for better logging and tracing
+- Consider Adding a Queue for asynchronous communication between components
