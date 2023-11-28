@@ -36,6 +36,5 @@ logging:
     org:
       springframework:
         cloud:
-          # in PROD env change TRACE to INFO
-          gateway: TRACE
+          gateway: INFO
           gateway.route.RouteDefinitionLocator: INFO

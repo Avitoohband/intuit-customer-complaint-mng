@@ -19,6 +19,9 @@ import java.util.UUID;
 public class ComplaintServiceImpl implements ComplaintService {
 
     private final ComplaintRepository complaintRepository;
+    private final String PURCHASES_SERVICE = "http://localhost:8081/purchases/{id}";;
+    private final String USER_MGN_SERVICE = "http://localhost:8081/users/{id}";;
+
 
     public ComplaintResponse createComplaint(ComplaintRequest complaintRequest) {
         Complaint complaint = dtoToEntity(complaintRequest);
@@ -71,12 +74,12 @@ public class ComplaintServiceImpl implements ComplaintService {
 
     private PurchaseResponse getPurchases(UUID purchaseId) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject("http://localhost:8081/purchases/{id}", PurchaseResponse.class, purchaseId.toString());
+        return restTemplate.getForObject(PURCHASES_SERVICE, PurchaseResponse.class, purchaseId.toString());
     }
 
     private UserManagementResponse getUserManagement(UUID userId) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject("http://localhost:8081/users/{id}", UserManagementResponse.class, userId.toString());
+        return restTemplate.getForObject(USER_MGN_SERVICE, UserManagementResponse.class, userId.toString());
     }
 
 }

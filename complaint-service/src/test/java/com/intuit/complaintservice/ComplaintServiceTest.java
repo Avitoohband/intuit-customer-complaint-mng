@@ -39,6 +39,7 @@ public class ComplaintServiceTest {
     private final String USER_MGN_URI = "http://localhost:8081/users/{id}";
 
 
+
     @Test
     public void testCreateComplaint() {
         ComplaintRequest complaintRequest = getComplaintRequest();
